@@ -2,13 +2,14 @@ import cv2
 import numpy as np
 
 
-def getCountours(img, cannyThreshold=[100, 100], showResult=False, minArea = 1000, filter=0, draw=False):
+def getCountours(img, cannyThreshold=[100, 100], showResult=False, minArea = 1000, maxArea = 1000000, filter=0, draw=False):
     '''
     Takes an image and returns an array of all contours found within that image sorted by size of the contour
     :param img: source image
     :param cannyThreshold: canny threshold
     :param showResult: Bool - displays the result of the function as an image
-    :param minArea:  int - minimum area to accept as a contour
+    :param minArea: int - minimum area to accept as a contour
+    :param maxArea: int - maximum area to accept as a contour
     :param filter: int - minimum number of corners
     :param draw: Bool - draw the contours identified on the source image
     :return: source image and the sorted array of contours
@@ -35,7 +36,7 @@ def getCountours(img, cannyThreshold=[100, 100], showResult=False, minArea = 100
     ret = []
     for contour in contours:
         area = cv2.contourArea(contour)
-        if area > minArea:
+        if minArea < area < maxArea:
             perimeter = cv2.arcLength(contour, True)
             cornerPoints = cv2.approxPolyDP(contour, 0.02*perimeter, True)
             boundingBox = cv2.boundingRect(cornerPoints)

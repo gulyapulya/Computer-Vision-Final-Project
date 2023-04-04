@@ -32,7 +32,15 @@ while torun:
     if len(contours) != 0:
         biggest = contours[0][2] # get the largest contour
         # shift perspective to top-down view
-        perspectiveShift = utils.warpImage(image, biggest, bg_width, bg_height)
+        perspectiveShift = utils.warpImage(image, biggest, bg_width, bg_height, pad=20)
+
+        detectedImages, detectedContours = utils.getCountours(perspectiveShift, minArea=2000, maxArea= 160000, filter=4,
+                                                              cannyThreshold=[40,40])
+
+        if len(detectedContours) != 0:
+            for obj in detectedContours:
+                # draw solid lines around detected images
+                cv2.polylines(detectedImages, [obj[2]], True, (0, 165, 255), 2)
         cv2.imshow('Background focus', perspectiveShift)
 
 
