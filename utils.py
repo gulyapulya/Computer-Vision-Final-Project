@@ -79,6 +79,23 @@ def reorder(points):
     returnPoints[2] = points[np.argmax(myDiff)]
     return returnPoints
 
-def warpImage(img, points, width, height):
-    pass
-
+def warpImage(img, points, width, height, pad=0):
+    '''
+    Shifts perspective of an image to straight-on view
+    :param img: source image
+    :param points: corner points
+    :param width: output width
+    :param height: output height
+    :param pad: padding to remove
+    :return: warped image
+    '''
+    # reorder the points in the correct orientation
+    points = reorder(points)
+    # create the perspective
+    input_points = np.float32(points)
+    output_points = np.float32([[0, 0], [width, 0], [0, height], [width, height]])
+    matrix = cv2.getPerspectiveTransform(input_points, output_points)
+    # warp based on the perspective
+    imgWarp = cv2.warpPerspective(img, matrix, (width, height))
+    imgWarp = imgWarp[pad:imgWarp.shape[0] - pad, pad:imgWarp.shape[1]-pad]
+    return imgWarp
