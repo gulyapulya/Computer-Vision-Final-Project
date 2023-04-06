@@ -100,3 +100,14 @@ def warpImage(img, points, width, height, pad=0):
     imgWarp = cv2.warpPerspective(img, matrix, (width, height))
     imgWarp = imgWarp[pad:imgWarp.shape[0] - pad, pad:imgWarp.shape[1]-pad]
     return imgWarp
+
+def getDistance(pointA, pointB):
+    '''
+    Get the distance between two points in pixels using the pythagorian theorem
+    :param pointA:
+    :param pointB:
+    :return: the pixel distance between point A and point B
+    '''
+    # sqrt((A_2-A_1)^2 + (B_2-B_1)^2)
+    return ((pointB[0]-pointA[0])**2 + (pointB[1]-pointA[1])**2)**0.5
+
