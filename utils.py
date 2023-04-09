@@ -1,9 +1,8 @@
 import cv2
 import numpy as np
-import config 
 
 
-def getContours(img, cannyThreshold=[100, 100], showResult=False, minArea = 0, maxArea = 100, filter = 0, draw=False):
+def getContours(img, cannyThreshold=[100, 250], showResult=False, minArea = 0, maxArea = 100, filter = 0, draw=False):
     '''
     Takes an image and returns an array of all contours found within that image sorted by size of the contour
     :param img: source image
@@ -101,28 +100,46 @@ def warpImage(img, points, width, height, pad=0):
     imgWarp = imgWarp[pad:imgWarp.shape[0] - pad, pad:imgWarp.shape[1]-pad]
     return imgWarp
 
-def drawMeasurements(img, box):
+def drawMeasurements(img, points, width, height):
     '''
     Draws measurements around the object
     :param img: image to draw on
-    :param box: rotated rectangle
+    :param points: rotated rectangle coordinates
+    :param width: rotated rectangle width
+    :param height: rotated rectangle height
     '''
     # draw the lines
-    points = cv2.boxPoints(box)
-    points = np.int0(points)
-    cv2.arrowedLine(img, points[0], points[1], (0, 255, 0), 3, 8, 0, 0.05)
-    cv2.arrowedLine(img, points[0], points[3], (0, 255, 0), 3, 8, 0, 0.05)
-    # write the length and height in cm
-    (cx, cy), (w, h), angle = box
-    l = round(w /config.scale/10, 1)
-    h = round(h /config.scale/10, 1)
+    cv2.drawContours(img, [points], 0, (0, 255, 0), 2)
     #draw measurements
     #check if square
-    if min(l, h) / max(l, h) > 0.95:
-        avg = round(np.average([l, h]), 1)
-        cv2.putText(img, '{}cm'.format(avg), (points[0][0] - 40, points[0][1]),
+    if min(width, height) / max(width, height) > 0.95:
+        avg = round(np.average([width, height]), 1)
+        cv2.putText(img, '{}cm'.format(avg), (points[0][0], points[0][1]),
                 cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, (189, 159, 0), 1, cv2.LINE_AA)
     else:
-        cv2.putText(img, '{}cm x {}cm'.format(l, h), (points[0][0] - 40, points[0][1]),
+        cv2.putText(img, '{}cm x {}cm'.format(width, height), (points[0][0], points[0][1]),
                 cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, (189, 159, 0), 1, cv2.LINE_AA)
+
+
+def convertCoordinates(coordinates, points, width, height, pad=0):
+    '''
+    Converts coordinates from transformed to original 
+    :param coordinates: array of coordinates from transformed image
+    :param points: corner points of original
+    :param width: transformed width
+    :param height: transformed height
+    :return: array of corresponding coordinates
+    '''
+    # reorder the points in the correct orientation
+    points = reorder(points)
+    # identify the forward trasnform
+    input_points = np.array(np.float32(points))
+    output_points = np.float32([[0, 0], [width, 0], [0, height], [width, height]])
+    matrix = cv2.getPerspectiveTransform(input_points, output_points)
+    # Reverse the transform
+    inv_matrix = np.linalg.pinv(matrix)
+    coordinates = np.float32(np.array([coordinates]) + pad)    
+    converted_coordinates = cv2.perspectiveTransform(coordinates, inv_matrix)[0]
+    converted_coordinates = np.int0(converted_coordinates)
+    return converted_coordinates
 
