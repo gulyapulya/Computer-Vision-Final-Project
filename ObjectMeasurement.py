@@ -2,8 +2,21 @@ import cv2
 import numpy as np
 import utils
 import config
+import argparse
 
-webcam = False
+#Command-Line Parse
+ap = argparse.ArgumentParser()
+ap.add_argument("-c","--camera", action='store', nargs='*',
+                help="Whether or not we're going to use camera")
+args = vars(ap.parse_args())
+
+
+#Webcam Configuration
+if args["camera"] is not None:
+    webcam = True
+else:
+    webcam = False
+
 image_path = './assets/straight_shadow.jpg'
 # Webcam capture settings
 capture = cv2.VideoCapture(0)
