@@ -24,8 +24,6 @@ Instructions to run the project is as follows:
 - Press `q` to exit the program.   
 
 ## Sample usage 
-![image](https://user-images.githubusercontent.com/54902370/231186749-9c9fe36f-5b49-44d2-93c0-3ca8d470f3ec.png)
-
 <img width="262" alt="image" src="https://user-images.githubusercontent.com/54902370/231185627-7f309e89-6b94-43be-ba00-11e7bd23efaa.png">
 <img width="263" alt="image" src="https://user-images.githubusercontent.com/54902370/231186415-b02fb8d1-7cf4-4c43-a732-11b37f60e7f9.png">
 <img width="263" alt="image" src="https://user-images.githubusercontent.com/54902370/231186749-9c9fe36f-5b49-44d2-93c0-3ca8d470f3ec.png">
