@@ -109,9 +109,17 @@ def drawMeasurements(img, points, width, height):
     :param height: rotated rectangle height
     '''
     # draw the lines
-    cv2.drawContours(img, [points], 0, (0, 255, 0), 2)
+    #cv2.drawContours(img, [points], 0, (0, 255, 0), 2)
+    #draw arrow-lines
+    lengthStart = (points[2][0], points[2][1])
+    lengthEnd = (points[3][0], points[3][1])
+    cv2.arrowedLine(img, lengthStart, lengthEnd, (0, 255, 0), 3, 8, 0, 0.05)
+    heightStart = (points[2][0], points[2][1])
+    heightEnd = (points[1][0], points[1][1])
+    cv2.arrowedLine(img, heightStart, heightEnd, (0, 255, 0), 3, 8, 0, 0.05)
     #draw measurements
     #check if square
+    """
     if min(width, height) / max(width, height) > 0.95:
         avg = round(np.average([width, height]), 1)
         cv2.putText(img, '{}cm'.format(avg), (points[0][0], points[0][1]),
@@ -119,7 +127,12 @@ def drawMeasurements(img, points, width, height):
     else:
         cv2.putText(img, '{}cm x {}cm'.format(width, height), (points[0][0], points[0][1]),
                 cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, (189, 159, 0), 1, cv2.LINE_AA)
-
+    """
+    #updated
+    cv2.putText(img, '{}cm'.format(width), (points[1][0], points[1][1]),
+                cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, (189, 159, 0), 1, cv2.LINE_AA)
+    cv2.putText(img, '{}cm'.format(height), (points[3][0], points[3][1]),
+                cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, (189, 159, 0), 1, cv2.LINE_AA)
 
 def convertCoordinates(coordinates, points, width, height, pad=0):
     '''
