@@ -24,10 +24,11 @@ Instructions to run the project is as follows:
 - Press `q` to exit the program.   
 
 ## Sample usage 
-<img width="262" alt="image" src="https://user-images.githubusercontent.com/52351598/231058044-5f9afbba-ffdc-46b3-9044-606553eaacb0.png">
-<img width="262" alt="image" src="https://user-images.githubusercontent.com/52351598/231058076-034e06b5-f30c-42d6-b00f-3bc337c0bab9.png">
-<img width="263" alt="image" src="https://user-images.githubusercontent.com/52351598/231058098-b0c0d2f5-d717-4b34-99b5-f0fe1758d290.png">
+![image](https://user-images.githubusercontent.com/54902370/231186749-9c9fe36f-5b49-44d2-93c0-3ca8d470f3ec.png)
 
+<img width="262" alt="image" src="https://user-images.githubusercontent.com/54902370/231185627-7f309e89-6b94-43be-ba00-11e7bd23efaa.png">
+<img width="263" alt="image" src="https://user-images.githubusercontent.com/54902370/231186415-b02fb8d1-7cf4-4c43-a732-11b37f60e7f9.png">
+<img width="263" alt="image" src="https://user-images.githubusercontent.com/54902370/231186749-9c9fe36f-5b49-44d2-93c0-3ca8d470f3ec.png">
 
 ## Contributors: 
 - Sunny [@sunnehh](https://github.com/sunnehh)
