@@ -4,7 +4,7 @@ import utils
 import config
 
 webcam = False
-image_path = './assets/samples/tilted_keys.jpg'
+image_path = './assets/samples/straight_no_shadow.jpg'
 # Webcam capture settings
 capture = cv2.VideoCapture(0)
 # brightness
