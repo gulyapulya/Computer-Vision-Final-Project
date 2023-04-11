@@ -129,9 +129,14 @@ def drawMeasurements(img, points, width, height):
                 cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, (189, 159, 0), 1, cv2.LINE_AA)
     """
     #updated
-    cv2.putText(img, '{}cm'.format(width), (points[1][0], points[1][1]),
-                cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, (189, 159, 0), 1, cv2.LINE_AA)
-    cv2.putText(img, '{}cm'.format(height), (points[3][0], points[3][1]),
+    if min(width, height) / max(width, height) > 0.95:
+        avg = round(np.average([width, height]), 1)
+        cv2.putText(img, '{}cm'.format(avg), (points[1][0], points[1][1]),
+                    cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, (189, 159, 0), 1, cv2.LINE_AA)
+    else:
+        cv2.putText(img, '{}cm'.format(width), (points[1][0], points[1][1]),
+                    cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, (189, 159, 0), 1, cv2.LINE_AA)
+        cv2.putText(img, '{}cm'.format(height), (points[3][0], points[3][1]),
                 cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, (189, 159, 0), 1, cv2.LINE_AA)
 
 def convertCoordinates(coordinates, points, width, height, pad=0):

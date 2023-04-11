@@ -17,7 +17,7 @@ if args["camera"] is not None:
 else:
     webcam = False
 
-image_path = './assets/tilted.jpg'
+image_path = './assets/samples/tilted_keys.jpg'
 # Webcam capture settings
 capture = cv2.VideoCapture(0)
 # brightness
