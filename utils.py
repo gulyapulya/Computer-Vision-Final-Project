@@ -119,6 +119,7 @@ def drawMeasurements(img, points, width, height):
     cv2.arrowedLine(img, heightStart, heightEnd, (0, 255, 0), 3, 8, 0, 0.05)
     #draw measurements
     #check if square
+    """
     if min(width, height) / max(width, height) > 0.95:
         avg = round(np.average([width, height]), 1)
         cv2.putText(img, '{}cm'.format(avg), (points[0][0], points[0][1]),
