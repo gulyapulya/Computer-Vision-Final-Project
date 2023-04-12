@@ -24,9 +24,9 @@ Instructions to run the project is as follows:
 - Press `q` to exit the program.   
 
 ## Sample usage 
-<img width="262" alt="image" src="https://user-images.githubusercontent.com/54902370/231185627-7f309e89-6b94-43be-ba00-11e7bd23efaa.png">
-<img width="263" alt="image" src="https://user-images.githubusercontent.com/54902370/231186415-b02fb8d1-7cf4-4c43-a732-11b37f60e7f9.png">
-<img width="263" alt="image" src="https://user-images.githubusercontent.com/54902370/231186749-9c9fe36f-5b49-44d2-93c0-3ca8d470f3ec.png">
+<img width="262" alt="image" src="https://user-images.githubusercontent.com/54902370/231600783-06bea246-468f-4eb9-b55f-2c212c816783.png">
+<img width="263" alt="image" src="https://user-images.githubusercontent.com/54902370/231601037-2e9ea647-f8e4-48b3-a3e1-d5927f1b7fe5.png">
+<img width="263" alt="image" src="https://user-images.githubusercontent.com/54902370/231601249-823f442b-8b02-4081-b9e9-9aad784953c1.png">
 
 ## Contributors: 
 - Sunny [@sunnehh](https://github.com/sunnehh)
