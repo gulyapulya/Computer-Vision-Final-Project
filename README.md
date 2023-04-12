@@ -14,7 +14,7 @@ Instructions to run the project is as follows:
 
 - Clone/Download the repository from the main working branch.
 - Navigate to the repo
-- Run the python file `ObjectMeasurements.py` in an IDE or CLI.
+- Run the python file `ObjectMeasurement.py` in an IDE or CLI.
 - When running the file through a CLI, use the following lines:
     -    Running with still images, `python ObjectMeasurement.py`
     -    Running with webcam, `python ObjectMeasurement.py --camera `
